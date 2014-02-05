@@ -1,0 +1,47 @@
+﻿<script type="text/template" class="tasks-board-template">
+<nav class="navbar navbar-default" role="navigation">
+   <a class="navbar-brand">ASP.NET MVC Realtime Sample</a>
+   <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" id="inputTaskDescription" class="form-control" placeholder="Enter task description">
+        </div>
+        <button type="button" class="btn btn-default" id="buttonAddNewTask">Add new task</button>
+   </form>
+</nav>
+<div id="divToDo" class="divTaskContainer droppable">
+    <div class="divColumnHeader">To Do</div>
+    <% _.each(tasks, function(task) { %>
+        <% if(task.get("TaskStateAlphaId") == 'todo') { %>
+            <div class="task draggable" task-id="<%= task.id %>">
+                <div class="drag-handler"></div>
+                <div class="content"><%= task.get("Content")%></div>
+                <div class="remove-handler label label-danger">Remove</div>
+            </div>
+        <%} %>
+    <%}); %>
+</div>
+<div id="divInProgress" class="divTaskContainer droppable">
+    <div class="divColumnHeader">In Progress</div>
+    <% _.each(tasks, function(task) { %>
+        <% if(task.get("TaskStateAlphaId") == 'inprogress') { %>
+            <div class="task draggable" task-id="<%= task.id %>">
+                <div class="drag-handler"></div>
+                <div class="content"><%= task.get("Content")%></div>
+                <div class="remove-handler label label-danger">Remove</div>
+            </div>
+        <%} %>
+    <%}); %>
+</div>
+<div id="divDone" class="divTaskContainer droppable">
+    <div class="divColumnHeader">Done</div>
+    <% _.each(tasks, function(task) { %>
+        <% if(task.get("TaskStateAlphaId") == 'done') { %>
+            <div class="task draggable" task-id="<%= task.id %>">
+                <div class="drag-handler"></div>
+                <div class="content"><%= task.get("Content")%></div>
+                <div class="remove-handler label label-danger">Remove</div>
+            </div>
+        <%} %>
+    <%}); %>
+</div>
+</script>
