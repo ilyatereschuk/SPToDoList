@@ -15,7 +15,7 @@
         var taskView = new TaskView(tasksCollection);
         //Set render on message income
         taskHub.client.broadcastMessage = function () {
-            taskBoardView.render();
+            taskView.render();
         };
         //Start connection and render when ready
         $.connection.hub.start().done(function () {
